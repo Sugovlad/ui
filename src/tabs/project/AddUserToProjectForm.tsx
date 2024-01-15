@@ -8,20 +8,19 @@ interface AddUserToProjectFormProps {
     handleClose: () => void;
     addUserToProject: (projectId: number, userId: number) => void;
     projectId: number;
+    users: User[]
 }
 
-const AddUserToProjectForm: React.FC<AddUserToProjectFormProps> = ({
-                                                                       show,
-                                                                       handleClose,
-                                                                       addUserToProject,
-                                                                       projectId
-                                                                   }) => {
-    const [users, setUsers] = useState<User[]>([]);
+const AddUserToProjectForm: React.FC<AddUserToProjectFormProps> = (
+    {
+        show,
+        handleClose,
+        addUserToProject,
+        projectId,
+        users
+    }
+) => {
     const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
-
-    useEffect(() => {
-        fetchUserList(setUsers)
-    }, []);
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
@@ -51,7 +50,7 @@ const AddUserToProjectForm: React.FC<AddUserToProjectFormProps> = ({
                         </Form.Control>
                     </Form.Group>
                     <Button variant="primary" type="submit"
-                            disabled={ selectedUserId == null}>
+                            disabled={selectedUserId == null}>
                         Add User to Project
                     </Button>
                 </Form>

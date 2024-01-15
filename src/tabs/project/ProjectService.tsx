@@ -57,13 +57,15 @@ const ProjectService: React.FC<ProjectServiceProps> = (
                                                 onClick={() => setAssignUserProjectId(project?.id ?? -1)}>
                                             <BsPersonFillAdd color="white" fontSize="1.5em"/>
                                         </Button>
-                                        {project?.id === assignUserProjectId && <AddUserToProject
-                                            show={project.id === assignUserProjectId}
-                                            addUserToProject={addUserToProjectCallback}
-                                            handleClose={() => setAssignUserProjectId(-1)}
-                                            projectId={project?.id ?? -2}
-
-                                        />}
+                                        {project?.id === assignUserProjectId &&
+                                            <AddUserToProject
+                                                show={project.id === assignUserProjectId}
+                                                addUserToProject={addUserToProjectCallback}
+                                                handleClose={() => setAssignUserProjectId(-1)}
+                                                projectId={project?.id ?? -2}
+                                                users={users}
+                                            />
+                                        }
                                     </div>
 
                                     <Collapse in={expandedProjectIds.has(project?.id ?? -2)}>
