@@ -5,8 +5,8 @@ import {API_HOST} from "../consts/consts";
 import {ErrorDescription} from "../error/ErrorMessage";
 
 
-const PROJECT_API = `${API_HOST}/api-service/project`;
-const USER_API = `${API_HOST}/api-service/user`;
+const PROJECT_API = `${API_HOST}/api/project`;
+const USER_API = `${API_HOST}/api/user`;
 export const getProject = (
     updateProjectsCallback: (projects: Project[]) => void,
     errorHandler: (error: ErrorDescription) => void
